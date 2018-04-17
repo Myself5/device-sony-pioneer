@@ -1,3 +1,4 @@
+#
 # Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,18 +12,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, device/sony/pioneer/aosp_h3113.mk)
+ifeq ($(TARGET_INIT_VENDOR_LIB),libinit_pioneer)
 
-# DualSim
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.multisim.config=dsds \
-    persist.radio.multisim.config=dsds \
-    ro.telephony.default_network=9,1
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_NAME := aosp_h4113
-PRODUCT_DEVICE := pioneer
-PRODUCT_MODEL := Xperia XA2 Dual (AOSP)
-PRODUCT_BRAND := Sony
-PRODUCT_MANUFACTURER := Sony
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall
+LOCAL_SRC_FILES := init_pioneer.cpp
+LOCAL_MODULE := libinit_pioneer
+include $(BUILD_STATIC_LIBRARY)
+
+endif

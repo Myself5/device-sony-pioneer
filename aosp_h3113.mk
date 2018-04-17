@@ -21,6 +21,5 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 PRODUCT_NAME := aosp_h3113
 PRODUCT_DEVICE := pioneer
-PRODUCT_MODEL := Xperia XA2 (AOSP)
 PRODUCT_BRAND := Sony
 PRODUCT_MANUFACTURER := Sony
